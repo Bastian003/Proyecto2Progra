@@ -48,6 +48,7 @@ public class Lluvia extends ElementoJuego implements InputProcessor  {
             rainDropsType.add(2);
         lastDropTime = TimeUtils.nanoTime();
     }
+   
 
     public void actualizarMovimiento(Tarro tarro) {
     	
@@ -145,5 +146,8 @@ public class Lluvia extends ElementoJuego implements InputProcessor  {
     public boolean scrolled(float amountX, float amountY) {
         // Lógica para manejar el desplazamiento del mouse (scroll) en la lluvia
         return false;
+    }
+    public void actualizarMovimiento() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
