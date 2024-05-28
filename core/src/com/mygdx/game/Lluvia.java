@@ -1,16 +1,17 @@
 package com.mygdx.game;
 import com.badlogic.gdx.InputProcessor;
+
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
 //hola
-public class Lluvia implements InputProcessor  {
+public class Lluvia extends ElementoJuego implements InputProcessor  {
     private Array<Rectangle> rainDropsPos;
     private Array<Integer> rainDropsType;
     private long lastDropTime;
@@ -48,7 +49,8 @@ public class Lluvia implements InputProcessor  {
         lastDropTime = TimeUtils.nanoTime();
     }
 
-    public void actualizarMovimiento(Tarro tarro) { 
+    public void actualizarMovimiento(Tarro tarro) {
+    	
         if (TimeUtils.nanoTime() - lastDropTime > 100000000) crearGotaDeLluvia();
         for (int i = 0; i < rainDropsPos.size; i++) {
             Rectangle raindrop = rainDropsPos.get(i);
@@ -66,6 +68,19 @@ public class Lluvia implements InputProcessor  {
                 }
                 rainDropsPos.removeIndex(i);
                 rainDropsType.removeIndex(i);
+            }
+            
+        }
+        
+    }
+    public void dibujar(SpriteBatch batch) {
+        // Implementación específica para dibujar la lluvia en el lote de sprites
+        for (int i = 0; i < rainDropsPos.size; i++) {
+            Rectangle raindrop = rainDropsPos.get(i);
+            if (rainDropsType.get(i) == 1) {
+                batch.draw(gotaMala, raindrop.x, raindrop.y); 
+            } else {
+                batch.draw(gotaBuena, raindrop.x, raindrop.y); 
             }
         }
     }

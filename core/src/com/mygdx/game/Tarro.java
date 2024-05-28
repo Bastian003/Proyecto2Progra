@@ -7,8 +7,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
-
-public class Tarro {
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+public class Tarro extends ElementoJuego {
     private Rectangle bucket;
     private Texture bucketImage;
     private Sound sonidoHerido;
